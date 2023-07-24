@@ -1,26 +1,9 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
 
-<style>
-
-  form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .btn {
-    border: 1px solid #353535;
-    background-color: #085b92;
-    color: #fff;
-    border-radius: 5px;
-    height: 40px;
-    width: 180px;
-    font-size: 1rem;
-  }
-
-</style>
+<link rel="stylesheet" href="{% static 'css/new_car.css' %}">
 
 <form action="" method='post' enctype='multipart/form-data'>
   {% csrf_token %}
@@ -28,6 +11,7 @@
   <table>
     {{ form.as_table }}
   </table>
+
   <button type="submit" value='cadastrar' class='btn btn-primary'>Cadastrar Novo Carro</button>
 
 </form>

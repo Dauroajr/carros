@@ -1,8 +1,8 @@
-
+from django import forms
 from django.contrib import admin
-from cars.models import Car, Brand #CarInventory
+from django.db import models
 
-# Register your models here.
+from cars.models import Car, Brand, CarInventory
 
 
 class BrandAdmin(admin.ModelAdmin):
@@ -11,15 +11,27 @@ class BrandAdmin(admin.ModelAdmin):
 
 
 class CarAdmin(admin.ModelAdmin):
-    list_display = ('model', 'brand', 'factory_year', 'model_year', 'value')
+    list_display = ('brand', 'model', 'factory_year', 'model_year', 'value')
     search_fields = ('model', 'brand')
 
-"""
+    formfield_overrides = {
+        models.DecimalField: {
+            'widget': forms.TextInput(attrs={'step': '0,01'})
+        }
+    }
+
+
 class CarInventoryAdmin(admin.ModelAdmin):
     list_display = ('created_at', 'cars_count')
- """
+
+    formfield_overrides = {
+        models.DecimalField: {
+            'widget': forms.TextInput(attrs={'step': '0,01'})
+        }
+    }
+
 
 
 admin.site.register(Brand, BrandAdmin)
 admin.site.register(Car, CarAdmin)
-""" admin.site.register(CarInventory, CarInventoryAdmin) """
+admin.site.register(CarInventory, CarInventoryAdmin)

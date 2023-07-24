@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "cars",
     "accounts",
-    "crispy_forms",
+    #"crispy_forms",
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -127,11 +127,14 @@ LANGUAGE_CODE = "pt-br"
 "pl-pl"
 "ro-ro"
 "th-th"
-""
-
 """
 
+
+USE_THOUSAND_SEPARATOR = True
+
+
 TIME_ZONE = "America/Sao_Paulo"
+
 """
 "UTC"
 """
